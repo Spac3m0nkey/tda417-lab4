@@ -1,9 +1,7 @@
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.PriorityQueue;
-import java.util.Random;
+import org.w3c.dom.Node;
+
+import java.util.*;
 
 import java.util.stream.Collectors;
 
@@ -94,9 +92,30 @@ public class PathFinder<V> {
 
     public Result<V> searchDijkstra(V start, V goal) {
         int visitedNodes = 0;
-        /********************
-         * TODO: Task 1 
-         ********************/
+        HashMap<V, DirectedEdge[]> edgeTo = new HashMap<>();
+        HashMap<V, Double> distTo = new HashMap<>();
+        Comparator<V> comp = Comparator.comparing(distTo::get);
+        PriorityQueue<V> queue = new PriorityQueue<>(comp);
+        ArrayList<V> visited = new ArrayList<>();
+
+        queue.add(start);
+        distTo.put(start, 0.0);
+
+        while (!queue.isEmpty()){
+            V v = queue.poll();
+            if (!visited.contains(v)){
+                visited.add(v);
+                if (v == goal){
+                    //TODO: Success
+                }
+                for (DirectedEdge edge : edgeTo.get(v)){
+                    
+                }
+            }
+        }
+
+
+
         return new Result<>(false, start, null, -1, null, visitedNodes);
     }
     
