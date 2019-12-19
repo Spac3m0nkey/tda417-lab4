@@ -1,8 +1,5 @@
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 import java.util.stream.Collectors;
 
@@ -63,18 +60,68 @@ public class WordLadder implements DirectedGraph<String> {
      * @return the edges incident on node {@code word} as a List
      */
     public List<DirectedEdge<String>> outgoingEdges(String word) {
-        /********************
-         * TODO: Task 2
-         ********************/
-        return new LinkedList<>();
+
+        /*
+        This is to use without a charset.. we be hella cool B)
+
+        LinkedList<DirectedEdge<String>> result = new LinkedList<>();
+
+        ArrayList<String> regTerms = new ArrayList<>();
+        for (int i = 0; i < word.length(); i++) {
+            String newWord = word;
+            char[] wordChars = newWord.toCharArray();
+            wordChars[i] = '.';
+            regTerms.add(new String(wordChars));
+        }
+
+        for (String string : dictionary){
+                if (string.length() != word.length())
+                    continue;
+
+               for (String reg : regTerms){
+                   if(string.matches(reg)){
+                       result.add(new DirectedEdge<>(word, string));
+                       break;
+                   }
+               }
+            }
+
+        return result;
+
+         */
+
+        LinkedList<DirectedEdge<String>> result = new LinkedList<>();
+
+        StringBuilder sb = new StringBuilder(word);
+
+        for (int i = 0; i < word.length(); i++){
+           char lmao = sb.charAt(i);
+            for (char c : charset) {
+                sb.replace(i, i+1, c+"");
+                if(dictionary.contains(sb.toString())){
+                    result.add(new DirectedEdge(word, sb.toString()));
+                }
+
+            }
+            sb.replace(i, i+1, lmao+"");
+        }
+
+        return result;
     }
 
 
     public double guessCost(String v, String w) {
-        /********************
-         * TODO: Task 4
-         ********************/
-        return 0;
+        char[] fst = v.toCharArray();
+        char[] snd = w.toCharArray();
+        double res = 0;
+
+
+        for (int i = 0; i < fst.length; i++){
+            if (fst[i] == snd[i]){
+                res++;
+            }
+        }
+        return (fst.length - res);
     }
 
 

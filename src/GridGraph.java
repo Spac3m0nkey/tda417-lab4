@@ -1,4 +1,5 @@
 
+import javax.swing.text.MutableAttributeSet;
 import java.lang.Math;
 
 import java.util.List;
@@ -101,10 +102,9 @@ public class GridGraph implements DirectedGraph<GridGraph.Coord> {
 
 
     public double guessCost(Coord start, Coord end) {
-        /********************
-         * TODO: Task 4
-         ********************/
-        return 0;
+        double lengthY = Math.abs(start.y - end.y);
+        double lengthX = Math.abs(start.x - end.x);
+        return Math.sqrt(Math.pow(lengthX, 2) + Math.pow(lengthY, 2));
     }
 
 
