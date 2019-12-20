@@ -100,7 +100,7 @@ public class PathFinder<V> {
         HashMap<V, Double> distTo = new HashMap<>();
         Comparator<V> comp = Comparator.comparing(distTo::get);
         PriorityQueue<V> queue = new PriorityQueue<>(comp);
-        ArrayList<V> visited = new ArrayList<>();
+        HashSet<V> visited = new HashSet<>();
 
         queue.add(start);
         distTo.put(start, 0.0);
@@ -169,7 +169,7 @@ public class PathFinder<V> {
             return Double.compare(fst, snd);
         };
         PriorityQueue<V> queue = new PriorityQueue<>(comp);
-        ArrayList<V> visited = new ArrayList<>();
+        HashSet<V> visited = new HashSet<>();
 
         queue.add(start);
         distTo.put(start, 0.0);
