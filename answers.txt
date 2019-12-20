@@ -97,8 +97,11 @@ shortest path: Path: syster -> sylter -> salter -> balter -> balder -> barder ->
  *  Why do you think this is the case?
  *****************************************************************************/
 
-[...]
+gridgraph 1.6
+WordLadder 6.95
+npuzzle 11.5
 
+The heuristic describes the real distance more accurately than our other models.
 
 /******************************************************************************
  *  Show pseudo-code of the following methods that you implemented
@@ -106,17 +109,25 @@ shortest path: Path: syster -> sylter -> salter -> balter -> balder -> barder ->
 
 // WordLadder.outgoingEdges(String word)
 
-[...]
+for every letter in word
+    for every char in charset
+        replace letter with char
+        if newWord is contained in dictionary
+            add newWord to result
 
 
 // WordLadder.guessCost(String v, String w)
 
-[...]
+for i < word.lenght
+    if v[i] == w[i]
+        res++
+return (word.lenght - res)
 
 
 // GridGraph.guessCost(String v, String w)
 
-[...]
+// x, y <- parse strings
+return pythagoras ((x1-x2)^2, (y1-y2)^2)
 
 
 
@@ -126,7 +137,10 @@ shortest path: Path: syster -> sylter -> salter -> balter -> balder -> barder ->
 
 // PathFinder.searchDijkstra(V start, V goal)
 
-[...]
+PriorityQue(comp) queue
+HashMap<node, double>
+
+
 
 
 /******************************************************************************
